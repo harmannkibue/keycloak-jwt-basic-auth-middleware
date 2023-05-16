@@ -7,15 +7,15 @@ import (
 	"net/http"
 )
 
-type AuthMiddleware struct {
+type AuthMiddlewareStruct struct {
 }
 
-func NewAuthMiddleware() *AuthMiddleware {
-	return &AuthMiddleware{}
+func NewAuthMiddleware() *AuthMiddlewareStruct {
+	return &AuthMiddlewareStruct{}
 }
 
 // AuthMiddleware is used to inject http basic auth authentication as a middleware -.
-func (authStruct *AuthMiddleware) AuthMiddleware() gin.HandlerFunc {
+func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
 		// Getting which gateway is used -.
@@ -59,7 +59,7 @@ func (authStruct *AuthMiddleware) AuthMiddleware() gin.HandlerFunc {
 	}
 }
 
-func (authStruct *AuthMiddleware) extractUUIDFromJsonHeaders(jsonStr string) (string, error) {
+func (authStruct *AuthMiddlewareStruct) extractUUIDFromJsonHeaders(jsonStr string) (string, error) {
 	var data map[string]interface{}
 	err := json.Unmarshal([]byte(jsonStr), &data)
 	if err != nil {
