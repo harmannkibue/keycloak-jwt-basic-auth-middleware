@@ -1,4 +1,4 @@
-package keycloak_auth_middleware
+package keycloak_middleware
 
 import (
 	"encoding/json"
