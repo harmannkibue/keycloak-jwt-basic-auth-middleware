@@ -1,4 +1,4 @@
-package http_cors
+package keycloak_middleware
 
 import "github.com/gin-gonic/gin"
 
