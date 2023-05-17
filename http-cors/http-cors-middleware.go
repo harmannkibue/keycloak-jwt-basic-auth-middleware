@@ -2,8 +2,16 @@ package http_cors
 
 import "github.com/gin-gonic/gin"
 
+type CorsMiddleware struct {
+}
+
+func NewCorsMiddleware() *CorsMiddleware {
+	return &CorsMiddleware{}
+
+}
+
 // CORSMiddleware used to allow cors from the frontend https://stackoverflow.com/questions/29418478/go-gin-framework-cors -.
-func CORSMiddleware() gin.HandlerFunc {
+func (CorsMiddleware) CORSMiddleware() gin.HandlerFunc {
 	// This is a cors middleware
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
