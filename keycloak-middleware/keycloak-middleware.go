@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -24,6 +25,7 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 		if authType == "basic" {
 			//	Set the organisation Id for the client -.
 			orgId := ctx.GetHeader("Orgid")
+			log.Println("IN BASIC AUTH MIDDLEWARE ORGANISATION ID ISS ", orgId)
 
 			ctx.Set("ORGANISATION-ID", orgId)
 		} else if authType == "jwt" {
