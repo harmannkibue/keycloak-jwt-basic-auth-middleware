@@ -22,7 +22,7 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 		// Getting which gateway is used -.
 		authType := ctx.GetHeader("Gateway")
 
-		log.Println("THE HEADERS ARRRE ", ctx.Request.Header)
+		log.Println("KEYCLOAK HEADERS ", ctx.Request.Header)
 
 		if authType == "basic" {
 			//	Set the organisation Id for the client -.
