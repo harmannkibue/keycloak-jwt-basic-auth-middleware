@@ -37,8 +37,8 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 			// Checking if there is an error in extracting uuid -.
 			if err != nil {
-				ctx.JSON(http.StatusInternalServerError, gin.H{
-					"error": "Internal Server Error.Please contact administrator! ",
+				ctx.JSON(http.StatusForbidden, gin.H{
+					"error": "Forbidden!",
 				})
 				// Abort processing of the request
 				ctx.Abort()
@@ -49,8 +49,8 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 			ctx.Set("ORGANISATION-ID", orgId)
 		} else {
 			//	trying to access our gateway the wrong way than the supported ways -.
-			ctx.JSON(http.StatusInternalServerError, gin.H{
-				"error": "Internal Server Error.Please contact administrator! ",
+			ctx.JSON(http.StatusForbidden, gin.H{
+				"error": "Forbidden!",
 			})
 
 			// Abort processing of the request
