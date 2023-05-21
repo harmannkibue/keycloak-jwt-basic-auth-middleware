@@ -26,14 +26,14 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 		if authType == "basic" {
 			//	Set the organisation Id for the client -.
-			orgId := ctx.GetHeader("Orgid")
+			orgId := ctx.GetHeader("orgid")
 			log.Println("IN BASIC AUTH MIDDLEWARE ORGANISATION ID ISS ", orgId)
 
 			ctx.Set("ORGANISATION-ID", orgId)
 		} else if authType == "jwt" {
 			// Done on separate IF to take care of the bug in HA-Proxy gateway keycloak -.
 			//	Set the organisation Id for the client -.
-			orgId, err := authStruct.extractUUIDFromJsonHeaders(ctx.GetHeader("Orgid"))
+			orgId, err := authStruct.extractUUIDFromJsonHeaders(ctx.GetHeader("orgid"))
 
 			// Checking if there is an error in extracting uuid -.
 			if err != nil {
