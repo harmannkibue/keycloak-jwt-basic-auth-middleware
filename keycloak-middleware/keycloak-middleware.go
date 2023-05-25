@@ -31,7 +31,6 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 			ctx.Set("ORGANISATION-ID", orgId)
 			ctx.Set("AUTH-TYPE", authType)
-			ctx.Set("AUTH-HEADERS", ctx.Request.Header)
 		} else if authType == "jwt" {
 			// Done on separate IF to take care of the bug in HA-Proxy gateway keycloak -.
 			//	Set the organisation Id for the client -.
@@ -49,6 +48,8 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 			}
 
 			ctx.Set("ORGANISATION-ID", orgId)
+			ctx.Set("AUTH-TYPE", authType)
+			ctx.Set("AUTH-HEADERS", ctx.Request.Header)
 		} else {
 			//	trying to access our gateway the wrong way than the supported ways -.
 			ctx.JSON(http.StatusForbidden, gin.H{
