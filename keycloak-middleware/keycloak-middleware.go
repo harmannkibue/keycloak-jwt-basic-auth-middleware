@@ -30,6 +30,8 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 			log.Println("IN BASIC AUTH MIDDLEWARE ORGANISATION ID ISS ", orgId)
 
 			ctx.Set("ORGANISATION-ID", orgId)
+			ctx.Set("AUTH-TYPE", authType)
+			ctx.Set("AUTH-HEADERS", ctx.Request.Header)
 		} else if authType == "jwt" {
 			// Done on separate IF to take care of the bug in HA-Proxy gateway keycloak -.
 			//	Set the organisation Id for the client -.
