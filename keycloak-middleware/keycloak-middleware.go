@@ -49,7 +49,7 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 			ctx.Set("ORGANISATION-ID", orgId)
 			ctx.Set("AUTH-TYPE", authType)
-			ctx.Set("AUTH-HEADERS", ctx.Request.Header)
+			ctx.Set("AUTH-HEADERS", ctx.GetHeader("Roles"))
 		} else {
 			//	trying to access our gateway the wrong way than the supported ways -.
 			ctx.JSON(http.StatusForbidden, gin.H{
