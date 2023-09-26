@@ -31,6 +31,7 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 
 			ctx.Set("ORGANISATION-ID", orgId)
 			ctx.Set("AUTH-TYPE", authType)
+			ctx.Set("AUTH-HEADERS", ctx.GetHeader("Roles"))
 		} else if authType == "jwt" {
 			// Done on separate IF to take care of the bug in HA-Proxy gateway keycloak -.
 			//	Set the organisation Id for the client -.
