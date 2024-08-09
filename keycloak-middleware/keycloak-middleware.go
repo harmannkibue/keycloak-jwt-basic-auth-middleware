@@ -23,6 +23,7 @@ func (authStruct *AuthMiddlewareStruct) AuthMiddleware() gin.HandlerFunc {
 		authType := ctx.GetHeader("Gateway")
 
 		log.Println("KEYCLOAK AUTH ROLES ", ctx.GetHeader("Roles"))
+		log.Println("KEYCLOAK HEADERS", ctx.Request.Header)
 
 		if authType == "basic" {
 			//	Set the organisation Id for the client -.
